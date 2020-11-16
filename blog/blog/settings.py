@@ -38,9 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'post.apps.PostConfig', # correct way of adding an app than just 'post'
+    'posts.apps.PostsConfig', # correct way of adding an app than just 'post'
 ]
 
+# they filtrate and handle HTTP requests
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -51,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# responsible for url routes
+# main file that is responsible for url routes
 ROOT_URLCONF = 'blog.urls'
 
 TEMPLATES = [
