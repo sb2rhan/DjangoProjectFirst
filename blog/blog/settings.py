@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'post.apps.PostConfig',
+    'post.apps.PostConfig', # correct way of adding an app than just 'post'
 ]
 
 MIDDLEWARE = [
