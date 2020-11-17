@@ -4,3 +4,4 @@
 # project's
 __pycache__
 venv
+*.sqlite3

@@ -19,7 +19,7 @@ from django.utils import timezone
     Get 1 model
     >> Post.objects.get(id=1) # .get(pk=1)
 
-    Change model
+    Change model properties
     >> from post.models import Post
     >> post = Post.objects.get(pk=1)
     >> post.title = 'another'
@@ -33,14 +33,14 @@ from django.utils import timezone
 
 class Post(models.Model):
     STATUS = [
-        (1, 'published'),
-        (0, 'unpublished')
+        ('p', 'published'),
+        ('u', 'unpublished')
     ]
 
     title = models.CharField(verbose_name='Название', max_length=120) # verbose_name is name in DB
     description = models.TextField(verbose_name='Описание', blank=True, default=None)
     publish_date = models.DateTimeField(verbose_name='Дата публикации', auto_now=timezone.now())
-    status = models.CharField(verbose_name='Статус', max_length=190, choices=STATUS, default=1)
+    status = models.CharField(verbose_name='Статус', max_length=190, choices=STATUS, default='p')
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default=1) # model with this field is Many in relation Many to 1
     # CASCADE means posts will be deleted when user is deleted from DB
 
@@ -48,7 +48,21 @@ class Post(models.Model):
     # tag is gonna be QuerySet
     # Adding Tag to Post: >> post1.tag.add(tag1)
 
+    def __str__(self):
+        return f'Post: {self.title}, by {self.author}, {self.publish_date}'
+
+
 class Tag(models.Model):
     title = models.CharField(verbose_name='Название', max_length=50)
     slug = models.SlugField(verbose_name='Тематика', max_length=255, db_index=True)
     # slug is a link, db_index=True makes this field as index
+
+    # this metaclass for representation of model in admin panel
+    # by changing default name to new verbose name
+    class Meta:
+        verbose_name = 'Hashtag'
+        verbose_name_plural = 'Hashtags'
+        ordering = ['title'] # default is id, now by title
+
+    def __str__(self):
+        return f'Tag: {self.title}, slug: {self.slug}'
