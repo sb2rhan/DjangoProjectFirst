@@ -2,6 +2,7 @@ from django.db import models
 # from django.contrib.auth.models import User # defaut Django user
 from django.contrib.auth import get_user_model # function to get default Django user
 from django.utils import timezone
+from django.urls import reverse
 """
     Command that saves model in db by shell:
     > python manage.py shell
@@ -40,6 +41,7 @@ class Post(models.Model):
     title = models.CharField(verbose_name='Название', max_length=120) # verbose_name is name in DB
     description = models.TextField(verbose_name='Описание', blank=True, default=None)
     publish_date = models.DateTimeField(verbose_name='Дата публикации', auto_now=timezone.now())
+    image = models.ImageField(null=True, blank=True)
     status = models.CharField(verbose_name='Статус', max_length=190, choices=STATUS, default='p')
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, default=1) # model with this field is Many in relation Many to 1
     # CASCADE means posts will be deleted when user is deleted from DB
@@ -51,11 +53,15 @@ class Post(models.Model):
     def __str__(self):
         return f'Post: {self.title}, by {self.author}, {self.publish_date}'
 
+    # by this function each model will have its own url value by their id
+    def get_absolute_url(self):
+        return reverse("details", kwargs={"id": self.pk}) # redirects
+
 
 class Tag(models.Model):
     title = models.CharField(verbose_name='Название', max_length=50)
-    slug = models.SlugField(verbose_name='Тематика', max_length=255, db_index=True)
     # slug is a link, db_index=True makes this field as index
+    slug = models.SlugField(verbose_name='Тематика', max_length=255, db_index=True)
 
     # this metaclass for representation of model in admin panel
     # by changing default name to new verbose name

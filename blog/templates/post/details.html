@@ -1,0 +1,17 @@
+{% extends 'post/wrapper.html' %}
+
+{% block title %}
+    Details page
+{% endblock title %}
+
+{% block content %}
+    <div class="card m-3">
+        <h2 class='card-header'>Blog post number {{ post.id }}</h2>
+        <div class='card-body'>
+            <div class='card-title'>
+                <h3>{{ post.title }}</h3>
+            </div>
+            <p>{{ post.description }}</p>
+        </div>
+    </div>
+{% endblock %}

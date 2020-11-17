@@ -1,0 +1,25 @@
+{% extends 'post/wrapper.html' %}
+
+{% block title %}
+    Main page
+{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class='card m-3'>
+            <div class='card-body'>
+                <div class='card-title'>
+                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3> <!-- using absolute url of model that is in models.py -->
+                    <p class='card-text'>Published in {{ post.publish_date }}</p>
+                </div>
+                <p>{{ post.description }}</p>
+                {% if post.image %}
+                <img src="{{ post.image.url }}" width="400" height="300">
+                {% endif %}
+            </div>
+            <div class="card-footer text-muted">
+                By <span class='font-italic'>{{ post.author }}</span>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

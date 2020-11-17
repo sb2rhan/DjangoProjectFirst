@@ -11,7 +11,7 @@
 
 </head>
 <body>
-    <div class="jumbotron d-flex justify-content-center">
+    <div class="container-fluid bg-dark text-light p-5 d-flex justify-content-center">
         <h1 class="display-4">Welcome to my website!</h1>    
     </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
@@ -22,12 +22,12 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link active" href="{% url 'main' %}">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-link" href="">Blogs</a>
+                <a class="nav-link" href="">About us</a>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 {%block content%}
