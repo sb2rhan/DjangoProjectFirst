@@ -8,6 +8,9 @@
     <div class="card m-3">
         <h2 class='card-header'>Blog post number {{ post.id }}</h2>
         <div class='card-body'>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" width="800" height="500">
+            {% endif %}
             <div class='card-title'>
                 <h3>{{ post.title }}</h3>
             </div>

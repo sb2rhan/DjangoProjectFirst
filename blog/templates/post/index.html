@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block content %}
+    <!-- Button trigger form component -->
+    <button type="button" class="btn btn-primary m-4" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-plus">Add a new post</i>
+    </button>
+
     {% for post in posts %}
         <div class='card m-3'>
             <div class='card-body'>
@@ -19,7 +24,31 @@
             </div>
             <div class="card-footer text-muted">
                 By <span class='font-italic'>{{ post.author }}</span>
+                <a href="{% url 'edit' id=post.id %}"><i class="fa fa-edit">Edit</i></a>
             </div>
         </div>
     {% endfor %}
+
+    <!-- Form component -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- enctype is needed to send images -->
+                    <form method='POST' action="{% url 'create' %}" enctype='multipart/form-data'>
+                        {% csrf_token %}
+                        {{ form }}
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
