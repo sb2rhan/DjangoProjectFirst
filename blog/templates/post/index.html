@@ -24,7 +24,8 @@
             </div>
             <div class="card-footer text-muted">
                 By <span class='font-italic'>{{ post.author }}</span>
-                <a href="{% url 'edit' id=post.id %}"><i class="fa fa-edit">Edit</i></a>
+                <a href="{% url 'edit' id=post.id %}" class="btn btn-primary mx-4">EDIT</a>
+                <a href="{% url 'delete' id=post.id %}" class="btn btn-danger">DELETE</a>
             </div>
         </div>
     {% endfor %}

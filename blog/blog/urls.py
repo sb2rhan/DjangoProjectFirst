@@ -23,6 +23,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     # path('', views.index),
     path('', include('posts.urls')), # include urls of post in home url
+    path('', include('auth_user.urls')),
+    path('', include('news.urls')),
     path('admin/', admin.site.urls),
 ]
 

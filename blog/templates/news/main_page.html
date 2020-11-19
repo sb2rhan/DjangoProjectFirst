@@ -1,0 +1,25 @@
+{% extends 'post/wrapper.html' %}
+
+{% block title %}
+News page
+{% endblock %}
+
+{% block content %}
+    {% for n in news %}
+        <div class='card m-3'>
+            <div class='card-body'>
+                <div class='card-title'>
+                    <h3>
+                        <a href="{{ n.get_absolute_url }}" class="text-secondary">{{ n.title }}</a>
+                    </h3>
+                    <p class='card-text'>Published in {{ n.publish_date }}</p>
+                </div>
+                <hr>
+                <p>{{ n.content }}</p>
+            </div>
+            <div class="card-footer text-muted">
+                By <span class='font-italic'>{{ n.publisher }}</span>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

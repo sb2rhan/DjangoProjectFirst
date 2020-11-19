@@ -1,0 +1,22 @@
+{% extends 'post/wrapper.html' %}
+
+{% block title %}
+News '{{ news.title }}'
+{% endblock title %}
+
+{% block content %}
+    <div class="card m-3">
+        <div class='card-header'>
+            <div class='card-title'>
+                <h3 class='display-4'>{{ news.title }}</h3>
+                <p>Published in {{ news.publish_date }}</p>
+            </div>
+        </div>
+        <div class='card-body px-5'>
+            <p>{{ news.content }}</p>
+        </div>
+        <div class='card-footer'>
+            By <span class="font-italic">{{ news.publisher }}</span>
+        </div>
+    </div>
+{% endblock %}

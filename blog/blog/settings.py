@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'posts.apps.PostsConfig', # correct way of adding an app than just 'post'
+    'auth_user.apps.AuthUserConfig',
+    'news.apps.NewsConfig',
 ]
 
 # they filtrate and handle HTTP requests
@@ -128,6 +130,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static' # or write: os.path.join(BASE_DIR, 'static')
 ]
 
-# for files from the db
+# for files that are uploaded to the server
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
