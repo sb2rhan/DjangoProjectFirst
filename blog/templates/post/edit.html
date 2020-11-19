@@ -5,7 +5,7 @@ Edit post
 {% endblock %}
 
 {% block content %}
-    <!-- enctype is needed to send images -->
+    <!-- enctype is needed to send images by form -->
     <form method='POST' action="{% url 'edit' id=post.id %}" enctype='multipart/form-data'>
         {% csrf_token %}
         {{ form }}

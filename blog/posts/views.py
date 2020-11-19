@@ -26,6 +26,7 @@ def detail(request, id):
 # for creating posts in main page
 def create(request):
     form = PostForm(request.POST, request.FILES)
+    # validating all fields
     if form.is_valid():
         form.save()
     return redirect('main')
@@ -33,10 +34,12 @@ def create(request):
 
 def edit(request, id):
     if request.method == 'GET':
+        # send edit page to user
         post = Post.objects.get(pk=id)
         form = PostForm(instance=post)
         return render(request, 'post/edit.html', { 'form': form, 'post': post })
     else:
+        # validate and save edited post
         post = Post.objects.get(id=id)
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():

@@ -1,20 +1,23 @@
 {% extends 'post/wrapper.html' %}
 
 {% block title %}
-    Details page
+Post '{{ post.title }}'
 {% endblock title %}
 
 {% block content %}
     <div class="card m-3">
         <h2 class='card-header'>Blog post number {{ post.id }}</h2>
         <div class='card-body'>
-            {% if post.image %}
-                <img src="{{ post.image.url }}" width="800" height="500">
-            {% endif %}
             <div class='card-title'>
                 <h3>{{ post.title }}</h3>
             </div>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" width="800" height="500">
+            {% endif %}
             <p>{{ post.description }}</p>
+        </div>
+        <div class='card-footer'>
+            <a href="{% url 'edit' id=post.id %}"><i class="fa fa-edit">Edit</i></a>
         </div>
     </div>
 {% endblock %}
