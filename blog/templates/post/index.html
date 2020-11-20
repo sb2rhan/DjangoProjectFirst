@@ -45,8 +45,8 @@
                     <form method='POST' action="{% url 'create' %}" enctype='multipart/form-data'>
                         {% csrf_token %}
                         {{ form }}
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary mt-3" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
                     </form>
                 </div>
             </div>

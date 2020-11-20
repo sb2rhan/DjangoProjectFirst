@@ -7,6 +7,7 @@ News '{{ news.title }}'
 {% block content %}
     <div class="card m-3">
         <div class='card-header'>
+            <h5 class='text-dark'>Theme: {{ news.theme }}</h5>
             <div class='card-title'>
                 <h3 class='display-4'>{{ news.title }}</h3>
                 <p>Published in {{ news.publish_date }}</p>

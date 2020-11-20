@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 # decorator that checks a user for authorization
 from django.contrib.auth.decorators import login_required
 from posts.models import Post
