@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -41,12 +42,19 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig', # correct way of adding an app than just 'post'
     'auth_user.apps.AuthUserConfig',
     'news.apps.NewsConfig',
+    'todo_api.apps.TodoApiConfig',
+
+    'rest_framework',
+    'corsheaders',
 ]
 
 # they filtrate and handle HTTP requests
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

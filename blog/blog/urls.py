@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('posts.urls')), # include urls of post in home url
     path('', include('auth_user.urls')),
     path('', include('news.urls')),
+    path('api/v1/', include('todo_api.urls')),
     path('admin/', admin.site.urls),
 ]
 
