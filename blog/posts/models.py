@@ -50,6 +50,9 @@ class Post(models.Model):
     # tag is gonna be QuerySet
     # Adding Tag to Post: >> post1.tag.add(tag1)
 
+    class Meta:
+        ordering = ['status'] # default is id, now by status
+
     def __str__(self):
         return f'Post: {self.title}, by {self.author}, {self.publish_date}'
 

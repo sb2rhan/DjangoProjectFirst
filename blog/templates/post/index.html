@@ -15,7 +15,11 @@
             <div class='card-body'>
                 <div class='card-title'>
                     <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3> <!-- using absolute url of model that is in models.py -->
-                    <p class='card-text'>Published in {{ post.publish_date }}</p>
+                    {% if post.status == 'p' %}
+                        <p class='card-text'>Published in {{ post.publish_date }}</p>
+                    {%else%}
+                        <p class='card-text'>Unpublished post</p>
+                    {% endif %}
                 </div>
                 <p>{{ post.description }}</p>
                 {% if post.image %}
